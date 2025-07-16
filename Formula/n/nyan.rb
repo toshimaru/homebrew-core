@@ -16,9 +16,7 @@ class Nyan < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/nyan -v 2>&1")
-    (testpath/"test.txt").write <<~EOS
-      nyan is a colourful cat.
-    EOS
-    assert_match(/nyan is a colourful cat./, shell_output("#{bin}/nyan test.txt"))
+    (testpath/"test.txt").write "nyan is a colourful cat."
+    assert_match "nyan is a colourful cat.", shell_output("#{bin}/nyan test.txt")
   end
 end
